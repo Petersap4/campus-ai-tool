@@ -6,7 +6,7 @@ An AI-powered study assistant designed to help students upload materials, proces
 
 * **Backend:** Node.js, Express
 * **File Management:** Multer
-* **AI Integration:** Google GenAI SDK (`gemini-2.5-flash`)
+* **AI Integration:** Google GenAI SDK (`gemini-3.6-flash`)
 * **Frontend:** HTML5, JavaScript (`campus_ai_tool.html`)
 
 ## Prerequisites
