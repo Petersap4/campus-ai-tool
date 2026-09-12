@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AUTh AI Study Assistant</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; background: #fdfdfd; color: #333; }
+        textarea { width: 100%; height: 140px; margin-bottom: 10px; padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
+        button { padding: 10px 20px; background: #1a73e8; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #1557b0; }
+        .card { background: #fff; border-left: 4px solid #1a73e8; padding: 15px; margin-top: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 0 4px 4px 0; }
+    </style>
+</head>
+<body>
+    <h2>AI Flashcard & Summary Generator</h2>
+    <p>Paste your messy notes below to instantly build study materials:</p>
+    <textarea id="notes" placeholder="Paste text here..."></textarea>
+    <br>
+    <button onclick="generate()">Generate Study Kit</button>
+    <div id="result"></div>
+
+    <script>
+        async function generate() {
+            const notes = document.getElementById('notes').value;       //get the notes from the textarea
+            const resultDiv = document.getElementById('result');        //get the div where results will be displayed
+            resultDiv.innerHTML = "Processing with Gemini...";          //display a loading message while waiting for the backend response
+
+            try {
+                const response = await fetch('http://localhost:3000/api/generate-study-material', {
+                    
+                    //send a POST request to the backend server with the notes
+                    
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },    //specify that the request body is JSON
+                    body: JSON.stringify({ topicNotes: notes })         //convert the notes into a JSON string and send it in the request body
+                });
+                const data = await response.json();                     //parse the JSON response from the backend
+
+                let html = `<h3>Summary</h3><p>${data.summary}</p><h3>Flashcards</h3>`;     //start building the HTML to display the summary and flashcards
+                if (data.flashcards) {                                                      //check if flashcards were returned in the response
+                    data.flashcards.forEach(fc => {                                         //loop through each flashcard and create a card for it
+                        html += `<div class="card"><strong>Q: ${fc.question}</strong><br><br>A: ${fc.answer}</div>`;
+                    });
+                }
+                resultDiv.innerHTML = html;                                                 //display the generated summary and flashcards in the result div
+            } catch (err) {
+                resultDiv.innerHTML = "Error connecting to backend server.";                //display an error message if the request fails
+            }
+        }
+    </script>
+</body>
+</html>
