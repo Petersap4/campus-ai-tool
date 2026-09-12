@@ -44,4 +44,4 @@ node server.js
 ```
 
 
-5. Open your browser and go to `http://localhost:3000` to run the application.
+5. Open your browser and go to `http://localhost:3000` to run the application or just open the HTML file (`campus_ai_tool.html`) with your preferred browser(e.g. Google Chrome, Microsoft Edge, Brave).
