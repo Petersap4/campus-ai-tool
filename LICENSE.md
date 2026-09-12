@@ -6,6 +6,7 @@
 
 
 
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 
 of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +21,7 @@ furnished to do so, subject to the following conditions:
 
 
 
-The above copyright notice and this permission notice shall be included in all
+#The above copyright notice and this permission notice shall be included in all
 
 copies or substantial portions of the Software.
 
