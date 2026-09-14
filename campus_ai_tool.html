@@ -328,7 +328,6 @@
             text-decoration: underline;
         }
 
-        /* Add this to your <style> section for a sleek, modern loading animation */
         .loading-card {
             text-align: center;
             padding: 40px 20px;
@@ -417,7 +416,6 @@
         const dropzone = document.getElementById('dropzoneLabel');
         const fileInput = document.getElementById('pdfFile');
 
-        // Prevent default drag behaviors
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             dropzone.addEventListener(eventName, preventDefaults, false);
             document.body.addEventListener(eventName, preventDefaults, false);
@@ -428,7 +426,6 @@
             e.stopPropagation();
         }
 
-        // Highlight drop zone when item is dragged over it
         ['dragenter', 'dragover'].forEach(eventName => {
             dropzone.addEventListener(eventName, () => dropzone.classList.add('dragover'), false);
         });
@@ -537,7 +534,6 @@
                     html += `<p>No quiz generated.</p>`;
                 }
 
-                // start building the HTML to display the summary and flashcards
                 html += `</div><div class="result-section"><h3>Flashcards</h3>`;
 
                 if (currentData.flashcards && currentData.flashcards.length > 0) {              // check if flashcards were returned in the response
