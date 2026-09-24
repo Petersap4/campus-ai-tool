@@ -58,7 +58,7 @@ app.post('/api/generate-study-material', upload.single('pdfFile'), async (req, r
         }
 
         const response = await ai.models.generateContent({      //call the Google GenAI API to generate content
-            model: 'gemini-3.6-flash',                          //specify the model to use
+            model: 'gemini-3.5-flash-lite',                          //specify the model to use
             contents: contentsParam,                            
             config: {                                           //specify the response format
                 responseMimeType: 'application/json',           //strict json output
